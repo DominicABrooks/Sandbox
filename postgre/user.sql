@@ -5,6 +5,7 @@ CREATE DATABASE user_info_storage_db;
 \c user_info_storage_db;
 
 -- Create the users table
+-- TODO: users needs to be renamed as "user" as per convention
 CREATE TABLE users (
   osu_id SERIAL PRIMARY KEY,
   webhooks TEXT[],
