@@ -1,10 +1,15 @@
 const express = require('express');
-const routes = require('./routes');
+const app = express();
 
-function setupRoutes(app) {
-  app.use('/', routes);
+// Import the route files
+const userRoutes = require('./routes/userRoutes');
+const serverRoutes = require('./routes/serverRoutes');
 
-  // Add more route configurations here if needed
-}
+// Connect the routes to the app
+app.use('/api/user', userRoutes);
+app.use('/api/server', serverRoutes);
 
-module.exports = setupRoutes;
+// Start the server
+app.listen(3000, () => {
+  console.log('Server is running on port 3000');
+});
