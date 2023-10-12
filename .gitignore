@@ -8045,3 +8045,13 @@ graphql/node_modules/whatwg-url/lib/URL-impl.js
 graphql/node_modules/whatwg-url/lib/url-state-machine.js
 graphql/node_modules/whatwg-url/lib/URL.js
 graphql/node_modules/whatwg-url/lib/utils.js
+graphql/node_modules/.bin/apollo-pbjs.cmd
+graphql/node_modules/.bin/apollo-pbjs.ps1
+graphql/node_modules/.bin/apollo-pbts.cmd
+graphql/node_modules/.bin/apollo-pbts.ps1
+graphql/node_modules/.bin/mime.cmd
+graphql/node_modules/.bin/mime.ps1
+graphql/node_modules/.bin/sha.js.cmd
+graphql/node_modules/.bin/sha.js.ps1
+graphql/node_modules/.bin/uuid.cmd
+graphql/node_modules/.bin/uuid.ps1
