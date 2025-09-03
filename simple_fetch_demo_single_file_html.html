@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Cat as a Service Demo</title>
+  <style>
+    :root { font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Apple Color Emoji", "Segoe UI Emoji"; }
+    body { margin: 0; padding: 2rem; background: #f7f7f8; }
+    .card { max-width: 720px; margin: 0 auto; background: #fff; padding: 1.25rem 1.5rem; border-radius: 16px; box-shadow: 0 6px 20px rgba(0,0,0,0.06); }
+    h1 { margin: 0 0 0.75rem; font-size: 1.35rem; }
+    p { margin: 0 0 1rem; color: #444; }
+    .row { display: flex; gap: 0.5rem; align-items: center; margin-top: 0.75rem; }
+    button { padding: 0.6rem 0.9rem; border: 0; border-radius: 10px; cursor: pointer; background: #6c7cff; color: white; font-weight: 600; }
+    button.secondary { background: #e9e9ef; color: #222; }
+    button:disabled { opacity: 0.6; cursor: not-allowed; }
+    .status { font-size: 0.9rem; margin-left: 0.5rem; color: #444; }
+    img { max-width: 100%; border-radius: 12px; margin-top: 1rem; display: block; }
+    footer { margin-top: 0.75rem; font-size: 0.85rem; color: #666; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>Random Cat with <code>fetch()</code></h1>
+    <p>Click the button to load a random cat from <a href="https://cataas.com" target="_blank">cataas.com</a>.</p>
+
+    <div class="row">
+      <button id="fetchBtn">Fetch Cat</button>
+      <button id="clearBtn" class="secondary">Clear</button>
+      <span class="status" id="status"></span>
+    </div>
+
+    <img id="catImage" alt="Random Cat will appear here" />
+
+    <footer>
+      <strong>Note:</strong> This demo uses the <code>/cat</code> endpoint from <a href="https://cataas.com">cataas.com</a>.
+    </footer>
+  </div>
+
+  <script>
+    const btn = document.querySelector('#fetchBtn');
+    const clearBtn = document.querySelector('#clearBtn');
+    const statusEl = document.querySelector('#status');
+    const catImg = document.querySelector('#catImage');
+
+    function setLoading(isLoading){
+      btn.disabled = isLoading;
+      statusEl.textContent = isLoading ? 'Loading…' : '';
+    }
+
+    function fetchCat(){
+      setLoading(true);
+      catImg.src = '';
+      const url = 'https://cataas.com/cat?time=' + Date.now(); // cache-busting
+
+      fetch(url)
+        .then((res) => {
+          if(!res.ok) throw new Error(`HTTP ${res.status} ${res.statusText}`);
+          return res.blob();
+        })
+        .then((blob) => {
+          catImg.src = URL.createObjectURL(blob);
+        })
+        .catch((err) => {
+          statusEl.textContent = `Error: ${err.message}`;
+        })
+        .finally(() => setLoading(false));
+    }
+
+    btn.addEventListener('click', fetchCat);
+    clearBtn.addEventListener('click', () => { catImg.src = ''; statusEl.textContent = ''; });
+
+    // Auto-fetch one on load
+    fetchCat();
+  </script>
+</body>
+</html>
