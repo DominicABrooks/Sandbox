@@ -1,53 +1,55 @@
+// chatServer.js
 import { WebSocketServer } from 'ws';
 
-const wss = new WebSocketServer({ port: 8765 });
-console.log('💬 Chat server running on ws://localhost:8765');
+export function createServer(port = 8765) {
+  const wss   = new WebSocketServer({ port });
+  const users = new Map();
 
-const users = new Map();
-
-function broadcastJSON(obj) {
-  const message = JSON.stringify(obj);
-  for (const client of wss.clients) {
-    if (client.readyState === client.OPEN) client.send(message);
+  function broadcastJSON(obj) {
+    const message = JSON.stringify(obj);
+    for (const client of wss.clients)
+      if (client.readyState === client.OPEN) client.send(message);
   }
-}
 
-function updateUserList() {
-  const userList = Array.from(users.values());
-  broadcastJSON({ type: 'userlist', users: userList });
-}
+  function updateUserList() {
+    const userList = Array.from(users.values());
+    broadcastJSON({ type: 'userlist', users: userList });
+  }
 
-wss.on('connection', (ws) => {
-  console.log('Client connected');
+  wss.on('connection', (ws) => {
+    ws.on('message', (message) => {
+      let data;
+      try {
+        data = JSON.parse(message);
+      } catch {
+        return;
+      }
 
-  ws.on('message', (message) => {
-    let data;
-    try {
-      data = JSON.parse(message);
-    } catch {
-      return; // ignore invalid JSON
-    }
+      switch (data.type) {
+        case 'join':
+          users.set(ws, data.username || 'Anonymous');
+          broadcastJSON({ type: 'message', text: `🟢 ${data.username} joined.` });
+          updateUserList();
+          break;
 
-    switch (data.type) {
-      case 'join':
-        users.set(ws, data.username || 'Anonymous');
-        broadcastJSON({ type: 'message', text: `🟢 ${data.username} joined.` });
-        updateUserList();
-        break;
+        case 'message':
+          broadcastJSON({ type: 'message', text: data.text });
+          break;
+      }
+    });
 
-      case 'message':
-        broadcastJSON({ type: 'message', text: data.text });
-        break;
-
-      default:
-        console.warn('Unknown message type:', data.type);
-    }
+    ws.on('close', () => {
+      const username = users.get(ws);
+      users.delete(ws);
+      broadcastJSON({ type: 'message', text: `🔴 ${username || 'A user'} left.` });
+      updateUserList();
+    });
   });
 
-  ws.on('close', () => {
-    const username = users.get(ws);
-    users.delete(ws);
-    broadcastJSON({ type: 'message', text: `🔴 ${username || 'A user'} left.` });
-    updateUserList();
-  });
-});
+  return { wss, users, broadcastJSON, updateUserList };
+}
+
+if (process.argv[1].endsWith('chatServer.js')) {
+  createServer();
+  console.log('💬 Chat server running on ws://localhost:8765');
+}
