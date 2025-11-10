@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Delivery Site Information</title>
+  <style>
+    /* Minimal styles for readability */
+    .flex-col { display: flex; flex-direction: column; }
+    .px-3 { padding-left: 0.75rem; padding-right: 0.75rem; }
+    .py-4 { padding-top: 1rem; padding-bottom: 1rem; }
+    .w-full { width: 100%; }
+    .bg-white { background-color: #fff; }
+    .mb-2 { margin-bottom: 0.5rem; }
+    .mb-4 { margin-bottom: 1rem; }
+    .mb-8 { margin-bottom: 2rem; }
+    .md\:flex { display: flex; }
+    .md\:grid { display: grid; }
+    .grid-cols-12 { grid-template-columns: repeat(12, 1fr); }
+    .gap-8 { gap: 2rem; }
+    .col-span-4 { grid-column: span 4 / span 4; }
+    .col-span-8 { grid-column: span 8 / span 8; }
+    .font-futuraEfDemiBold { font-weight: 600; }
+    .btn-function { text-decoration: underline; cursor: pointer; }
+    .inline-flex { display: inline-flex; }
+    .items-center { align-items: center; }
+    .mr-2 { margin-right: 0.5rem; }
+    .ml-4 { margin-left: 1rem; }
+  </style>
+</head>
+<body>
+  <div class="flex-col px-3 py-4 w-full bg-white sm:p-4 md:flex md:p-6 shadow-mp no-print" data-testid="delivery-site-information">
+    <div class="mb-8">
+      <div class="justify-between items-center mb-2 w-full md:flex">
+        <h3 class="mb-2 md:mb-0">Customer information</h3>
+        <a href="#" class="block mb-4 text-xl underline btn-function md:mb-0">
+          <img class="inline-block mr-2 w-2.5 h-3.5" alt="" src="data:image/svg+xml,%3csvg%20width='10'%20height='14'%20viewBox='0%200%2010%2014'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cpath%20d='M0%2014H10V12.3529H0V14ZM10%204.94118H7.14286V0H2.85714V4.94118H0L5%2010.7059L10%204.94118Z'%20fill='black'/%3e%3c/svg%3e">
+          Download (PDF)
+        </a>
+      </div>
+      <div>
+        <div class="grid-cols-12 gap-8 mb-4 md:mb-2 md:grid">
+          <p class="col-span-4 mb-1 md:mb-0">Name</p>
+          <p class="col-span-8 font-futuraEfDemiBold">[REDACTED_NAMN]</p>
+        </div>
+        <div class="grid-cols-12 gap-8 mb-4 md:mb-2 md:grid">
+          <p class="col-span-4 mb-1 md:mb-0">Housing type</p>
+          <p class="col-span-8 font-futuraEfDemiBold">[REDACTED_BOENDEFORM]</p>
+        </div>
+        <div class="grid-cols-12 gap-8 mb-4 md:mb-2 md:grid">
+          <p class="col-span-4 mb-1 md:mb-0">Meter location</p>
+          <p class="col-span-8 font-futuraEfDemiBold">[REDACTED_PLACERING]</p>
+        </div>
+        <div class="grid-cols-12 gap-8 mb-4 md:mb-2 md:grid">
+          <p class="col-span-4 mb-1 md:mb-0">Meter panel</p>
+          <p class="col-span-8 font-futuraEfDemiBold">[REDACTED_TAVLA]</p>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <div class="mb-8">
+        <h3 class="mb-2">Site information</h3>
+        <div class="grid-cols-12 gap-8 mb-4 md:mb-2 md:grid">
+          <p class="col-span-4 mb-1 md:mb-0">Site ID</p>
+          <p class="col-span-8">
+            <span class="font-futuraEfDemiBold">[REDACTED_ANL_ID]</span>
+            <a href="#" class="inline-flex items-center ml-4 group font-futuraEfBook">
+              <img src="data:image/svg+xml,%3csvg%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2012%2014'%3e%3cpath%20d='M8.842%200H1.263C.568%200%200%20.573%200%201.273v8.909h1.263v-8.91h7.58V0Zm-.631%202.545H3.789c-.694%200-1.256.573-1.256%201.273l-.007%208.91c0%20.7.562%201.272%201.257%201.272h6.954c.695%200%201.263-.573%201.263-1.273V6.364L8.21%202.545ZM3.789%2012.727V3.818h3.79V7h3.158v5.727H3.789Z'%20fill='%23000'/%3e%3c/svg%3e" class="mr-1 w-3 h-3.5" aria-hidden="true" alt="">
+              <span class="group-hover:underline">Copy</span>
+            </a>
+          </p>
+        </div>
+        <div class="grid-cols-12 gap-8 mb-4 md:mb-2 md:grid">
+          <p class="col-span-4 mb-1 md:mb-0">Site address</p>
+          <p class="col-span-8">
+            <span class="font-futuraEfDemiBold">[REDACTED_ADRESS]</span>
+          </p>
+        </div>
+        <div class="grid-cols-12 gap-8 mb-4 md:mb-2 md:grid">
+          <p class="col-span-4 mb-1 md:mb-0">Site type</p>
+          <p class="col-span-8"><span class="font-futuraEfDemiBold">[REDACTED_TYP]</span></p>
+        </div>
+        <div class="grid-cols-12 gap-8 mb-4 md:mb-2 md:grid">
+          <p class="col-span-4 mb-1 md:mb-0">Meter number</p>
+          <p class="col-span-8"><span class="font-futuraEfDemiBold">[REDACTED_MATARNR]</span></p>
+        </div>
+        <div class="grid-cols-12 gap-8 mb-4 md:mb-2 md:grid">
+          <p class="col-span-4 mb-1 md:mb-0">Site status</p>
+          <p class="col-span-8"><span class="font-futuraEfDemiBold">[REDACTED_STATUS]</span></p>
+        </div>
+        <div class="grid-cols-12 gap-8 mb-4 md:mb-2 md:grid">
+          <p class="col-span-4 mb-1 md:mb-0">Start date</p>
+          <p class="col-span-8"><span class="font-futuraEfDemiBold">[REDACTED_STARTDATUM]</span></p>
+        </div>
+      </div>
+
+      <div class="mb-8">
+        <h3 class="mb-2">Billing basis details</h3>
+        <div class="grid-cols-12 gap-8 mb-4 md:mb-2 md:grid">
+          <p class="col-span-4 mb-1 md:mb-0">Grid subscription</p>
+          <p class="col-span-8 font-futuraEfDemiBold">[REDACTED_ABONNEMANG]</p>
+        </div>
+        <div class="grid-cols-12 gap-8 mb-4 md:mb-2 md:grid">
+          <p class="col-span-4 mb-1 md:mb-0">Measurement method</p>
+          <p class="col-span-8 font-futuraEfDemiBold">[REDACTED_MATMETOD]</p>
+        </div>
+        <div class="grid-cols-12 gap-8 mb-4 md:mb-2 md:grid">
+          <p class="col-span-4 mb-1 md:mb-0">Number of phases</p>
+          <p class="col-span-8 font-futuraEfDemiBold">[REDACTED_FASER]</p>
+        </div>
+        <div class="grid-cols-12 gap-8 mb-4 md:mb-2 md:grid">
+          <p class="col-span-4 mb-1 md:mb-0">Meter fuse</p>
+          <p class="col-span-8 font-futuraEfDemiBold">[REDACTED_SAKRING]</p>
+        </div>
+        <div class="grid-cols-12 gap-8 mb-4 md:mb-2 md:grid">
+          <p class="col-span-4 mb-1 md:mb-0">Estimated annual usage (kWh)</p>
+          <p class="col-span-8 font-futuraEfDemiBold">[REDACTED_ELANV]</p>
+        </div>
+      </div>
+
+      <div class="mb-8">
+        <h3 class="mb-2">Network information</h3>
+        <div class="grid-cols-12 gap-8 mb-4 md:mb-2 md:grid">
+          <p class="col-span-4 mb-1 md:mb-0">Service number</p>
+          <p class="col-span-8 font-futuraEfDemiBold">[REDACTED_SERVISNR]</p>
+        </div>
+        <div class="grid-cols-12 gap-8 mb-4 md:mb-2 md:grid">
+          <p class="col-span-4 mb-1 md:mb-0">Grid area</p>
+          <p class="col-span-8 font-futuraEfDemiBold">[REDACTED_OMRADE]</p>
+        </div>
+        <div class="grid-cols-12 gap-8 mb-4 md:mb-2 md:grid">
+          <p class="col-span-4 mb-1 md:mb-0">Type of measurement</p>
+          <p class="col-span-8 font-futuraEfDemiBold">[REDACTED_MATNINGSTYP]</p>
+        </div>
+        <div class="grid-cols-12 gap-8 mb-4 md:mb-2 md:grid">
+          <p class="col-span-4 mb-1 md:mb-0">Constant</p>
+          <p class="col-span-8 font-futuraEfDemiBold">[REDACTED_KONSTANT]</p>
+        </div>
+      </div>
+
+      <div>
+        <h3 class="mb-2">Contract parties</h3>
+        <div class="grid-cols-12 gap-8 mb-4 md:mb-2 md:grid">
+          <p class="col-span-4 mb-1 md:mb-0">Grid supplier</p>
+          <p class="col-span-8 font-futuraEfDemiBold">[REDACTED_NATLEVERANTOR]</p>
+        </div>
+        <div class="grid-cols-12 gap-8 mb-4 md:mb-2 md:grid">
+          <p class="col-span-4 mb-1 md:mb-0">Electricity retailer</p>
+          <p class="col-span-8 font-futuraEfDemiBold">[REDACTED_ELHANDEL]</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
